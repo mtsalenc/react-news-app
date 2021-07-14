@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 
 import SingleNewsItem from './SingleNewsItem.js';
 
@@ -17,7 +16,7 @@ class AllNews extends Component {
     const { handle } = self.props.match.params;
     const api_endpoint = `https://newsapi.org/v2/everything?q=${handle}&sortBy=publishedAt&language=en&apiKey=${api_key}`;
 
-    await axios.get(api_endpoint).then(function (response){
+    await fetch(api_endpoint).then(function (response){
       const data = response.data;
       const news = data.articles.slice(0, 30);
       //console.log(handle);
